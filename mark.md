@@ -83,7 +83,7 @@ dispath((changeList(list)))
 
 
 
-6-1 使用proxy代理，让中间层承担数据获取职责
+# 6-1 使用proxy代理，让中间层承担数据获取职责
 yarn add express-http-proxy
 
 用的时候，总是报错，连状态码都没有，只好先用res.send()先返回这个api路由的请求
@@ -92,7 +92,7 @@ yarn add express-http-proxy
 下节内容
 
 
-6-2 服务端请求和客户端请求对不同处理
+# 6-2 服务端请求和客户端请求对不同处理
 （1）浏览器运行
 /api/getData, 表示 http://localhost:3008/api/getData
 
@@ -104,11 +104,16 @@ yarn add express-http-proxy
 
 
 
-6-3 axios中instance的使用
+# 6-3 axios中instance的使用
 6-2节对解决方法太low了，这节改版方法
 主要用aixos中对baseURL
 
 
 
-6-4 巧用redux-thunk中的withExtraArgument
+# 6-4 巧用redux-thunk中的withExtraArgument
+后面三分钟可以听听，关于中间层渲染
 
+
+# 6-5 使用renderRoutes方法实现对多级路由的支持
+
+import { renderRoutes } from "react-router-config";

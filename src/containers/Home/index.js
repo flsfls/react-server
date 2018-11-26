@@ -10,13 +10,13 @@ class Home extends React.Component {
 
   componentDidMount() {
     const { getData } = this.props
-    getData(false)
+    getData()
   }
 
   render() {
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <p>this is Home</p>
         <p>{this.props.name}</p>
         <button onClick={() => alert(this.props.name)}>hi, click me</button>
@@ -26,7 +26,7 @@ class Home extends React.Component {
 }
 
 Home.loadData = (store) => {
-  return store.dispatch(getData(true))
+  return store.dispatch(getData())
 }
 
 const mapStateToProps = (state, ownProps) => {

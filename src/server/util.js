@@ -4,7 +4,7 @@ import { StaticRouter, Route } from "react-router-dom";
 import Routes from "../Routes";
 import { getStore } from "../store";
 import { Provider } from "react-redux";
-import { matchRoutes } from "react-router-config";
+import { matchRoutes, renderRoutes } from "react-router-config";
 import proxy from 'express-http-proxy'
 
 export const render = (req, res) => {
@@ -21,14 +21,17 @@ export const render = (req, res) => {
   // console.log('store============', store.getState())
 
   Promise.all(promises).then(() => {
-    console.log('store', store.getState())
+    // console.log('store', store.getState())
     const content = renderToString(
       <Provider store={store}>
         <StaticRouter context={{}} location={req.path}>
           <div>
-            {Routes.map(route => (
+            {/* {Routes.map(route => (
               <Route {...route} />
-            ))}
+            ))} */}
+            {
+              renderRoutes(Routes)
+            }
           </div>
         </StaticRouter>
       </Provider>

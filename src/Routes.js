@@ -2,6 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './containers/Home'
 import Login from './containers/Login'
+import App from './App'
 
 // export default (
 //     <div>
@@ -9,19 +10,16 @@ import Login from './containers/Login'
 //       <Route path='/login' exact component={Login}></Route>
 //     </div>
 // )
-export default [
-  {
+export default [{
+  path: '/',
+  component: App,
+  routes: [
+    {
       path: '/',
       component: Home,
       exact: true,
       loadData: Home.loadData,
       key: 'home',
-      // routes: [{
-      //   path: '/test',
-      //   component: Login,
-      //   exact: true,
-      //   key: 'test'
-      // }]
   },
   {
     path: '/login',
@@ -29,5 +27,27 @@ export default [
     exact: true,
     key: 'login'
   }
-]
+  ]
+}]
+// export default [
+//   {
+//       path: '/',
+//       component: Home,
+//       exact: true,
+//       loadData: Home.loadData,
+//       key: 'home',
+//       // routes: [{
+//       //   path: '/test',
+//       //   component: Login,
+//       //   exact: true,
+//       //   key: 'test'
+//       // }]
+//   },
+//   {
+//     path: '/login',
+//     component: Login,
+//     exact: true,
+//     key: 'login'
+//   }
+// ]
 

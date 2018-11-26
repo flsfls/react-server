@@ -3,8 +3,8 @@ import Thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { homeReducer } from './reducers'
-
-// import 
+import clientAxios from '../client/request'
+import serverAxios from '../server/request'
 
 const rootReducer = combineReducers({
   homeReducer,
@@ -16,10 +16,10 @@ const rootReducer = combineReducers({
 //  export default store
 
 export const getStore = () => {
-  return createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk, logger)))
+  return createStore(rootReducer, composeWithDevTools(applyMiddleware(Thunk.withExtraArgument(serverAxios), logger)))
 }
 
 export const getClientStore = () => {
   const defautlStore = window.context.state
-  return createStore(rootReducer, defautlStore, composeWithDevTools(applyMiddleware(Thunk, logger)))
+  return createStore(rootReducer, defautlStore, composeWithDevTools(applyMiddleware(Thunk.withExtraArgument(clientAxios), logger)))
 }
