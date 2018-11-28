@@ -12,7 +12,7 @@ import { GET_DATA } from './constants'
 
 export const getData = () => {
   return (dispatch, getState, aixosInstance) => {
-    return aixosInstance.get('/api/getData?name=123').then((res) => {
+    return aixosInstance.get('/api/getData').then((res) => {
       dispatch({type: GET_DATA, payload: res.data})
     })
   }

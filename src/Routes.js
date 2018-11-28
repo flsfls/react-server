@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Home from './containers/Home'
 import Login from './containers/Login'
 import App from './App'
+import NotFound from './containers/NotFound'
 
 // export default (
 //     <div>
@@ -13,6 +14,7 @@ import App from './App'
 export default [{
   path: '/',
   component: App,
+  loadData: App.loadData,
   routes: [
     {
       path: '/',
@@ -20,13 +22,16 @@ export default [{
       exact: true,
       loadData: Home.loadData,
       key: 'home',
-  },
-  {
-    path: '/login',
-    component: Login,
-    exact: true,
-    key: 'login'
-  }
+    },
+    {
+      path: '/login',
+      component: Login,
+      exact: true,
+      key: 'login'
+    },
+    {
+      component: NotFound,
+    }
   ]
 }]
 // export default [

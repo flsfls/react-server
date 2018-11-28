@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: '/'
+  baseURL: '/',
+  params: { secret: 'abcdefg'},
 })
 
 export default instance

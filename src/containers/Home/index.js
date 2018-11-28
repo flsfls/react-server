@@ -26,19 +26,18 @@ class Home extends React.Component {
 }
 
 Home.loadData = (store) => {
-  return store.dispatch(getData())
+  // return store.dispatch(getData())
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    ...state.homeReducer
+    ...state.home
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getData: () => {
-      // 感觉这里有个()奇怪
       dispatch(getData())
     }
   }
