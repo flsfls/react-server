@@ -1,16 +1,20 @@
 import React from 'react';
+import withStyles from '../../withStyles'
 import Header from '../../components/Header'
 import { connect } from 'react-redux'
 import { getData } from '../../store/actions'
+// import * as styles from './index.scss'
+import styles from './index.css'
 
 class Home extends React.Component {
+  
   constructor(props) {
     super(props)
   }
 
   componentDidMount() {
     const { getData } = this.props
-    getData()
+    // getData()
   }
 
   render() {
@@ -19,7 +23,7 @@ class Home extends React.Component {
         {/* <Header /> */}
         <p>this is Home</p>
         <p>{this.props.name}</p>
-        <button onClick={() => alert(this.props.name)}>hi, click me</button>
+        <button onClick={() => alert(this.props.name)} className={styles.btn}>hi, click me</button>
       </div>
     )
   }
@@ -42,4 +46,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
   }
 }
-export default connect(mapStateToProps, { getData })(Home);
+export default connect(mapStateToProps, { getData })(withStyles(Home, styles));

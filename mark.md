@@ -179,3 +179,48 @@ if (context.action === 'REPLACE') {
 
 # 7-4 数据请求失败下promise处理
 思路: 在每个loadData外层再包个promise, 就算请求失败，catch也执行resolve
+
+
+
+
+# 8-1
+style-loader在服务端使用会有问题
+在服务端使用isomorphic-style-loader
+
+localIdentName: '[name]_[local]_[hash:base64:5]'
+表示className的命名格式，文件名称+样式名称+前五位base64
+
+bug: 
+(1)当把js关掉，css不会显示, 但是className是有的
+(2)js打开，把缓存关掉，刷新页面，会发现样式抖动（因为样式没有在服务端渲染）
+
+
+
+# 8-2 如何实现css样式的服务端渲染
+利用componentWillMount生命周期，给staticContext.css赋值，styles._getCss()取值
+
+componentWillMount() {
+  const { staticContext } = this.props
+  staticContext && (staticContext.css = styles._getCss())
+  // if (styles._getCss) {
+  //   console.log('_getCss', styles._getCss())
+
+  // }
+}
+
+
+
+# 8-3 多组件中的样式如何整合
+Header组件拿不到staticContext, 需要App组件传props
+
+整合思路：
+  css作为数组，利用css.join('\n')整合
+
+
+
+
+# 8-4 LoadData方法潜在问题的修正
+
+
+
+# 

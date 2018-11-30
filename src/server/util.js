@@ -18,7 +18,13 @@ export const render = (store, Routes, req, context) => {
     </Provider>
   );
 
+  // const cssStr = context.css ? context.css : ''
+  const cssStr = context.css.length ? context.css.join('\n') : ''
+
   return `<html>
+    <head>
+      <style>${cssStr}</style>
+    </head>
     <body>
       <div id=root>${content}</div>
       <script>
