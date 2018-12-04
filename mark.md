@@ -180,6 +180,16 @@ if (context.action === 'REPLACE') {
 # 7-4 数据请求失败下promise处理
 思路: 在每个loadData外层再包个promise, 就算请求失败，catch也执行resolve
 
+const promises = [];
+matchedRoutes.forEach(item => {
+  if (item.route.loadData) {
+    promises.push(item.route.loadData(store));
+    const promise = new Promise((resolve, reject) => {
+      item.route.loadData(store).then(resolve).catch(resolve)
+    })
+    promises.push(promise)
+  }
+});
 
 
 
@@ -223,4 +233,36 @@ Header组件拿不到staticContext, 需要App组件传props
 
 
 
-# 
+# 8-5 使用高阶组件精简styles代码
+
+
+
+
+# 9-1 什么是seo, 为什么服务端渲染对seo更友好
+搜索引擎能识别HTML的内容，不能识别客户端加载js的内容
+
+
+# 9-2 title和description的真正作用
+提升网页的转化率，不提升排名
+
+# 9-3 如何做好seo
+
+
+
+# 9-4 React-Helmet
+在组件里面使用这个，对服务端无效
+
+在服务端上修改:
+const helmet = Helmet.renderStatic()
+
+ <head>
+  ${helmet.title.toString()}       // 这里的title是组件里面写的title
+  ${helmet.meta.toString()}
+</head>
+
+
+
+# 9-6 使用预渲染解决SEO问题的新思路
+yarn add prerender --save
+
+prerender.io
