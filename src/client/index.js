@@ -8,7 +8,6 @@ import { renderRoutes } from "react-router-config";
 
 const store = getClientStore()
 const App = () => {
-
   return (
     <Provider store={store}>
       <BrowserRouter>
